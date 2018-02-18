@@ -1,7 +1,8 @@
 .leftbar {
     padding: 20;
+    color: #000000;
+    background-color: #E2E1E1;
     position:fixed;
-    z-index: 2;
     left:0; top:50; bottom: 0;
     float: left; 
     width: 25%;
@@ -11,10 +12,10 @@
 .header
 {
 background-color: #E2E1E1;
-color: white;
+color: #000000;
 text-align: center;
 position:fixed
-z-index: 1;
+
 left:0; top:0;   
 height:50;
     
