@@ -2,9 +2,10 @@
 .leftbar {
 
 left:0; top:0;   
+	background-color: blue;
 width: 210;
 height: 100%;
-background-color: blue;
+
 text-align: left;
 position:fixed
 
@@ -16,8 +17,6 @@ position:fixed
 .header
 {
 
-left:0; 
-top:0;   
 height:50;
 background-color: #E2E1E1;
 width:100%;
@@ -40,7 +39,7 @@ position:fixed
 
 
 .footer
-{  z-index:1;
+{  
     left: 0;
     bottom: 0;
  
