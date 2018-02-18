@@ -4,7 +4,7 @@
     background-color: #E2E1E1;
     position:fixed;
     left:0; top:;  
-    width: 200;
+    width: 25%;
     height: 100%;
 
 
@@ -34,6 +34,6 @@ height:50;
 {
  padding: 20;
  background-color: #E2E1E1;
- 
+ width: 100%;
  text-align: center;
 }
