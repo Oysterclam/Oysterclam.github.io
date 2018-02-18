@@ -1,23 +1,15 @@
 
 .header{
-left:0;
-	width:100%
 background-color:#E2E1E1;
 text-align: center;
 }
-.notfooter
-{
-  top:0;
-
-  background-color:blue;
-}
 
 .leftbar {
+	background-color: red;
 
 left:0; top:0;   
-	background-color: blue;
 width: 210;
-height: 30%;
+height: 20%;
 
 text-align: left;
 position:fixed
@@ -41,8 +33,7 @@ position:fixed
     bottom: 0;
     left: 0;
 
-   z-index:1;
-  
+   
     background-color: #E2E1E1;
    
     text-align: right;
@@ -56,6 +47,6 @@ position:fixed
     padding:20;
     margin-bottom:20;
     background-color: #E2E1E1;
-    color: #000000;
+
    text-align: center;
 }
