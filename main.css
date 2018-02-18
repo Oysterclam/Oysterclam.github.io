@@ -33,7 +33,8 @@ height:50;
 #entrieslist
 {
  padding: 20;
+ right:0;
  background-color: #E2E1E1;
- width: 100%;
+ width: 75%;
  text-align: center;
 }
