@@ -1,4 +1,16 @@
 
+.header{
+background-color:#E2E1E1;
+text-align:center;
+	position:fixed;
+}
+.notfooter
+{
+  top:0;
+
+  background-color:blue;
+}
+
 .leftbar {
 
 left:0; top:0;   
@@ -14,18 +26,6 @@ position:fixed
 
 
 }
-.header
-{
-
-height:50;
-background-color: #E2E1E1;
-width:100%;
-text-align: center;
-position:fixed
-
-
-    
-}
 .float-left-area  {
 		  width: 70%;
 		  float: left;
@@ -35,18 +35,16 @@ position:fixed
 		  width: 30%;
 		  float: left;
 		  }
-
-
-
 .footer
 {  
-    left: 0;
     bottom: 0;
- 
+    left: 0;
+
+   z-index:1;
   
-    background-color: #E2E1E1;
-    color: #000000;
-    text-align: center;
+    background-color: #12Ab90;
+   
+    text-align: right;
 
 }   
 #entrieslist
