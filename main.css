@@ -20,6 +20,8 @@ position:fixed
 
 }
 .float-left-area  {
+display: inline-block;
+  
 width: 70%;
 float: left;
 border: #999999 1px solid;
@@ -27,6 +29,7 @@ border: #999999 1px solid;
 }
 
 .float-right-area {
+display: inline-block;
 width: 30%;  
 float: left;
 border: #999999 1px solid;
