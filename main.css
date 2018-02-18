@@ -19,7 +19,6 @@ position:fixed
 
 
 }
-.notfooter
 .float-left-area  {
 float: left;
   
@@ -37,10 +36,10 @@ border: #999999 1px solid;
 }
 
 .footer
-{  
+{    float:left;
     bottom: 0;
     left: 0;
-    float:left;
+
    width:100%;
     background-color: #E2E1E1;
    
