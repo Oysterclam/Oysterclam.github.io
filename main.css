@@ -3,7 +3,7 @@
     text-align: left;
     background-color: #E2E1E1;
     position:fixed;
-    left:0; top:50;  
+    left:0; top:;  
     width: 200;
     height: 100%;
 
@@ -30,6 +30,3 @@ height:50;
     text-align: center;
 
 }   
-#entrieslist
-{
-}
