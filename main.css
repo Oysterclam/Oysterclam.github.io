@@ -14,7 +14,7 @@ text-align:center;
 .leftbar {
 
 left:0; top:0;   
-	background-color: blue;
+	background-color: #E2E1E1;
 width: 210;
 height: 100%;
 
@@ -42,7 +42,7 @@ position:fixed
 
    z-index:1;
   
-    background-color: #12Ab90;
+    background-color: #E2E1E1;
    
     text-align: right;
 
@@ -55,6 +55,6 @@ position:fixed
    
     margin-bottom:20;
     background-color: #E2E1E1;
-    color: #000000;
+
     text-align: center;
 }
