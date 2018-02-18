@@ -20,18 +20,17 @@ position:fixed
 
 }
 .float-left-area  {
-display: inline-block;
-  
-width: 20%;
 float: left;
+width: 20%;
+
 border: #999999 1px solid;
 
 }
 
 .float-right-area {
-display: inline-block;
-width: 70%;  
 float: left;
+width: 70%;  
+
 border: #999999 1px solid;
 }
 
