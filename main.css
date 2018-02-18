@@ -1,12 +1,19 @@
 .leftbar {
     position:fixed;
-    z-index: 1;
+    z-index: 2;
     left:0; top:50; bottom: 0;
     float: left; 
     width: 25%;
 
 }
-
+.header
+{
+position:fixed
+z-index: 1;
+left:0; top:0;   
+height:50;
+    
+}
 .footer
 {
     left: 0;
