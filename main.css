@@ -1,6 +1,6 @@
 .leftbar {
     padding: 20;
-    color: black;
+
     background-color: #E2E1E1;
     position:fixed;
     left:0; top:50; bottom: 0;
@@ -12,7 +12,7 @@
 .header
 {
 background-color: #E2E1E1;
-color: #000000;
+color: #ffffff;
 text-align: center;
 position:fixed
 
