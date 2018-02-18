@@ -32,9 +32,11 @@ height:50;
 }   
 #entrieslist
 {
- padding: 20;
- right:0;
- background-color: #E2E1E1;
- width: 75%;
- text-align: center;
+
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #E2E1E1;
+    color: #000000;
+    text-align: center;
 }
