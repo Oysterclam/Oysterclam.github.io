@@ -5,10 +5,10 @@ text-align: center;
 }
 
 .leftbar {
-background-color: red;
+	background-color: red;
 
 left:0; top:0;   
-width: 210;
+width: 20%;
 height: 20%;
 
 text-align: left;
@@ -21,6 +21,7 @@ position:fixed
 }
 .float-left-area  {
 float: left;
+  
 width: 20%;
 
 border: #999999 1px solid;
@@ -47,11 +48,12 @@ border: #999999 1px solid;
 }   
 #entrieslist
 {
-   margin-top:60;
+  
     left: 0;
  
+    border: #999999 1px solid;
     padding:20;
-    margin-bottom:20;
+
     background-color: #E2E1E1;
 
    text-align: center;
