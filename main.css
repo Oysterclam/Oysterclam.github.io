@@ -27,6 +27,18 @@ position:fixed
 
     
 }
+.float-left-area  {
+		  width: 70%;
+		  float: left;
+		  }
+
+.float-right-area {
+		  width: 30%;
+		  float: left;
+		  }
+
+.inner-left	  {
+
 .footer
 {  z-index:1;
     left: 0;
