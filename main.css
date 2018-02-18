@@ -1,4 +1,5 @@
 .leftbar {
+    padding: 20px;
     position:fixed;
     z-index: 2;
     left:0; top:50; bottom: 0;
