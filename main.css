@@ -1,5 +1,6 @@
 
 .leftbar {
+ z-index:2;
 left:0; top:0;   
 width: 210;
 height: 100%;
@@ -27,11 +28,11 @@ position:fixed
     
 }
 .footer
-{
+{  z-index:1;
     left: 0;
     bottom: 0;
     width: 100%;
-    z-index:1;
+  
     background-color: #E2E1E1;
     color: #000000;
     text-align: center;
