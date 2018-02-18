@@ -40,10 +40,10 @@ position:fixed
 }   
 #entrieslist
 {
-
+   margin-top:60;
     left: 0;
     width: 100%;
-    margin-top:20;
+   
     margin-bottom:20;
     background-color: #E2E1E1;
     color: #000000;
