@@ -1,5 +1,6 @@
 .leftbar {
     position:absolute;
+    z-index: 1;
     left:0; top:120px; bottom: 0;
     float: left; 
     width: 25%;
