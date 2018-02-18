@@ -20,14 +20,18 @@ position:fixed
 
 }
 .float-left-area  {
-		  width: 70%;
-		  float: left;
-		  }
+width: 70%;
+float: left;
+border: #999999 1px solid;
+
+}
 
 .float-right-area {
-		  width: 30%;
-		  float: left;
-		  }
+width: 30%;  
+float: left;
+border: #999999 1px solid;
+}
+
 .footer
 {  
     bottom: 0;
