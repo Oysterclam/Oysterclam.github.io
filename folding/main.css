@@ -5,18 +5,12 @@ text-align: center;
 }
 
 .leftbar {
-	background-color: #6699ff;
-
+background-color: #6699ff;
 left:0; top:0;   
 width: 20%;
 height: 20%;
-
 text-align: left;
 position:fixed
-
-
-
-
 
 }
 #float-left-area  {
@@ -24,7 +18,7 @@ position:fixed
 background-color: white;
 float: left;
 width: 20%;
-
+height: 1200px;
 border: #999999 1px solid;
 
 }
