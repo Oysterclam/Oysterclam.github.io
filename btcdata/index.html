@@ -5,21 +5,24 @@
 </head>
 <body>
 
-    <button onclick="showNames()">Toggle name list</button>
+    <button onclick="showNames()">Toggle name list visibility</button>
+    <br><br>
+    <input id="email_search" value="Achow101">
+    <button onclick="get_messages('listserv_indices')">search emails</button>
     <div class="mypanel"></div>    
     <script>
     var all_Emails;
     var all_Lightning;
     var all_Core_Dev;
     var all_Identities;
+    $.ajaxSetup({
+        async: false
+    });
     $.getJSON('/btcdata/combined_identities.json', function(data) {
         //query identies JSON
         console.log(data);
         console.log(data[0]);
         all_Identities = data;
-        for(var i=0;i<Object.keys(all_Identities).length;i++){
-        console.log(all_Identities[i].names[0]);
-        }
         generate_nametable(all_Identities);
     });
     $.getJSON('/btcdata/allEmails.json', function(data) {
@@ -41,6 +44,9 @@
         cell.appendChild(cellText);
         return cell;
     }
+    function isNumeric(value) {
+        return /^-?\d+$/.test(value);
+    }
     function generate_nametable(all_Identities){
         var identities_length = Object.keys(all_Identities).length;
         var body = document.getElementsByTagName("body")[0];    
@@ -60,20 +66,133 @@
             tblBody.appendChild(row);
         }
         tbl.appendChild(tblBody);
-        // appends <table> into <body>
-        body.appendChild(tbl);
         // sets the border attribute of tbl to 1;
         tbl.setAttribute("border", "1");
         tbl.setAttribute("id", "name_list");
+        tbl.setAttribute("style", "display: none;");
+        // appends <table> into <body>
+        body.appendChild(tbl);
 
     }
     function showNames(){
-    var x = document.getElementById("name_list");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
+        var x = document.getElementById("name_list");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
     }
+    function get_messages(source_name){
+        remove_tables();
+        var ID = document.getElementById("email_search").value;
+        //get input, see if it is index of person or a name
+        if(isNumeric(ID)){
+            //if a number, we just search for index
+            query_messages(ID,source_name);
+        }
+        else{
+            //if a name, we search for the name and display error otherwise
+            name_ID = all_Identities.findIndex(obj => obj.names.includes(ID));
+            login_ID = all_Identities.findIndex(obj => obj.logins.includes(ID));
+            if(name_ID==-1 && login_ID==-1){
+                var body = document.getElementsByTagName("body")[0]; 
+                body.appendChild(make_table_message("Name not found!"))
+            }
+            else{
+                if(name_ID>=login_ID){
+                    query_messages(name_ID,source_name);
+                }
+                else{
+                    query_messages(login_ID,source_name);
+                }
+            }
+        }
+    }
+    function query_messages(ID,source_name){
+        source_name = [source_name];
+        message_indices = all_Identities[ID][source_name[0]];
+        email_count = message_indices.length;
+        if(email_count==0){
+            var body = document.getElementsByTagName("body")[0]; 
+            body.appendChild(make_table_message("No messages in database"))
+        }
+        else{
+            for(var i=0;i<message_indices.length;i++){
+            make_email_table(message_indices[i]);
+            }
+        }
+    }
+    function make_email_table(index){
+        email = all_Emails[index];
+        var body = document.getElementsByTagName("body")[0];    
+        var tbl = document.createElement("table");
+        var tblBody = document.createElement("tbody"); 
+        
+        var row = document.createElement("tr");
+        row.appendChild(make_cell("Name")); 
+        row.appendChild(make_cell(email.authorName)); 
+        tblBody.appendChild(row);
+
+        var row = document.createElement("tr");
+        row.appendChild(make_cell("Subject")); 
+        row.appendChild(make_cell(email.subject)); 
+        tblBody.appendChild(row);
+
+        var row = document.createElement("tr");
+        row.appendChild(make_cell("Body")); 
+        row.appendChild(make_cell(email.body)); 
+        tblBody.appendChild(row);
+
+        var row = document.createElement("tr");
+        row.appendChild(make_cell("Context")); 
+        row.appendChild(make_cell("link in progress")); 
+        tblBody.appendChild(row);
+
+        tbl.appendChild(tblBody);
+        body.appendChild(tbl);
+        tbl.setAttribute("border", "1");
+        tbl.setAttribute("class", "message_table");
+        tbl.setAttribute("onclick", "toggle_table_collapse(this)");
+        tbl.setAttribute("collapsed", "false")
+    }
+    function make_table_message(text){
+        var tbl = document.createElement("table");
+        var tblBody = document.createElement("tbody");  
+        var row = document.createElement("tr");
+        row.appendChild(make_cell(text)); 
+        tblBody.appendChild(row);
+        tbl.appendChild(tblBody);
+        tbl.setAttribute("class", "message_table");
+        return tbl;
+    }
+    function remove_tables(){
+        var body = document.getElementsByTagName("body")[0];    
+        var tables =  Array.prototype.slice.call(document.getElementsByClassName("message_table"), 0);
+        console.log(tables);  
+        for(element of tables){
+            console.log("delet");
+            body.removeChild(element);
+            console.log(element);  
+        }
+    }
+    function toggle_table_collapse(element){  
+        //toggle collapse of a message table
+        cells = element.getElementsByTagName("td");
+        cells_num = cells.length;
+        if(element.getAttribute("collapsed")=="false"){
+            for(var i=0;i<cells_num;i++){
+                cells[i].setAttribute("style","display:none");
+            }
+            element.setAttribute("style","width:100%;background-color:grey;");
+            element.setAttribute("collapsed","true");
+        }
+        else{
+            for(var i=0;i<cells_num;i++){
+                cells[i].setAttribute("style","display:table-cell");
+            }
+            element.setAttribute("style","width:100%;background-color:white;");
+            element.setAttribute("collapsed","false");
+        }
     }
 </script>
 
