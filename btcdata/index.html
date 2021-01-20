@@ -4,11 +4,77 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
-    <button onclick="console.log('hi')">Click me</button>
-    <div class="mypanel"></div>    <script>
-    $.getJSON('/btcdata/allEmails1.json', function(data) {
+
+    <button onclick="showNames()">Toggle name list</button>
+    <div class="mypanel"></div>    
+    <script>
+    var all_Emails;
+    var all_Lightning;
+    var all_Core_Dev;
+    var all_Identities;
+    $.getJSON('/btcdata/combined_identities.json', function(data) {
+        //query identies JSON
         console.log(data);
+        console.log(data[0]);
+        all_Identities = data;
+        for(var i=0;i<Object.keys(all_Identities).length;i++){
+        console.log(all_Identities[i].names[0]);
+        }
+        generate_nametable(all_Identities);
     });
+    $.getJSON('/btcdata/allEmails.json', function(data) {
+        console.log(data);
+        all_Emails = data;
+    });
+    $.getJSON('/btcdata/allDevLog.json', function(data) {
+        console.log(data);
+        all_Core_Dev = data;
+    });
+    $.getJSON('/btcdata/allLightning.json', function(data) {
+        console.log(data);
+        all_Lightning = data;
+    });
+    function make_cell(text){
+        //return cell from text
+        var cell = document.createElement("td");
+        var cellText = document.createTextNode(text);
+        cell.appendChild(cellText);
+        return cell;
+    }
+    function generate_nametable(all_Identities){
+        var identities_length = Object.keys(all_Identities).length;
+        var body = document.getElementsByTagName("body")[0];    
+        var tbl = document.createElement("table");
+        var tblBody = document.createElement("tbody"); 
+        var row = document.createElement("tr");
+
+        row.appendChild(make_cell("Index")); 
+        row.appendChild(make_cell("Name")); 
+        row.appendChild(make_cell("Nickname")); 
+        tblBody.appendChild(row);
+        for (var i=0; i<identities_length; i++){
+            var row = document.createElement("tr");
+            row.appendChild(make_cell(i)); 
+            row.appendChild(make_cell(all_Identities[i].names[0])); 
+            row.appendChild(make_cell(all_Identities[i].logins[0])); 
+            tblBody.appendChild(row);
+        }
+        tbl.appendChild(tblBody);
+        // appends <table> into <body>
+        body.appendChild(tbl);
+        // sets the border attribute of tbl to 1;
+        tbl.setAttribute("border", "1");
+        tbl.setAttribute("id", "name_list");
+
+    }
+    function showNames(){
+    var x = document.getElementById("name_list");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+    }
 </script>
 
 </body>
