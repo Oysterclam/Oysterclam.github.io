@@ -8,14 +8,15 @@
     <button onclick="showNames()">Toggle name list visibility</button>
     <br><br>
     <label> Word: </label>
-    <input id="text_search" value="fix"> 
-    <button onclick="search_text()">search text</button> 
+    <input id="text_search" value=""> 
+    <button onclick="search_text()">search all for text</button> 
     <br>
     <label> Name: </label>
     <input id="email_search" value="Achow101">
     <button onclick="get_messages('listserv_indices')">search emails</button>
     <button onclick="get_messages('core_dev_indices')">search core_dev irc</button>
     <button onclick="get_messages('lightning_indices')">search lightning_dev irc</button>
+    <input type="checkbox" id="text_check" >include text in search</input>
     <br>
 
     <p>double click message to hide</p>
@@ -127,6 +128,7 @@
     function get_messages(source_name){
         //display a table of messages for a given person we searched for
         //take input from the email_search text input box
+        //check if text_check checkbox is checked, and search text if so
         //specify which database we pull from:
         var source_json;
         var source_link_function;
@@ -160,6 +162,25 @@
         if(email_count==0){
             var body = document.getElementsByTagName("body")[0]; 
             body.appendChild(make_table_message("No messages in database"))
+        }
+        else if(document.getElementById("text_check").checked==true){
+            var text = document.getElementById("text_search").value;
+            for(var i=0;i<message_indices.length;i++){
+                //bad code: emails use .body, irc messages use .text to refer to their contents
+                //temporary fix by checking the case.
+                //in future, either make them both .text, or relegate this case check to a different function
+                if(source_name == 'listserv_indices'){
+                    if(source_json[message_indices[i]].body.includes(text)){
+                        displayfunction(message_indices[i], source_json, source_link_function);
+                    }
+                }
+                else{
+                    if(source_json[message_indices[i]].text.includes(text)){
+                        displayfunction(message_indices[i], source_json, source_link_function);
+                    }
+                }
+                
+            }
         }
         else{
             //display all found messages
@@ -253,7 +274,7 @@
         var text = document.getElementById("text_search").value;
         for(var i=0;i<all_Emails.length;i++){
             if(all_Emails[i].body.includes(text)){
-                make_email_table(i);
+                make_email_table(i, all_Emails, date_to_listserv_thread);
             }
         }
     }
