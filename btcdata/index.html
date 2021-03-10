@@ -55,6 +55,7 @@
         var cell = document.createElement("td");
         var cellText = document.createTextNode(text);
         cell.appendChild(cellText);
+        cell.setAttribute("style", "white-space: pre;");
         return cell;
     }
     function isNumeric(value) {
